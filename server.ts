@@ -16,8 +16,22 @@ const PORT = process.env.PORT || 3000;
 // Create swagger spec
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
+const allowedOrigins = [
+  'http://localhost:4200', // dev
+  'https://your-angular-app.onrender.com', // or Vercel, etc.
+];
+
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(morgan('dev'));
 app.use(express.json());
 
