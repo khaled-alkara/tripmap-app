@@ -22,15 +22,7 @@ const allowedOrigins = [
 ];
 
 // Middleware
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors());
 
 app.use(morgan('dev'));
 app.use(express.json());
