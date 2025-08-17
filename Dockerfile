@@ -34,7 +34,7 @@ COPY --from=builder /app/package.json ./
 
 # Copy built frontend (build it locally first)
 # Assuming you built Angular into ../dist/frontend
-COPY ../dist/frontend ./public
+# COPY ../dist/frontend ./public
 
 
 # Expose port
