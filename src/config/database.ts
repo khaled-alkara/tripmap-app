@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 // Railway injects these env vars
-const DB_NAME = process.env.MYSQLDATABASE || 'tripmap';
+const DB_NAME = process.env.MYSQLDATABASE || 'railway';
 const DB_USER = process.env.MYSQLUSER || 'root';
 const DB_PASS = process.env.MYSQLPASSWORD || 'password';
 const DB_HOST = process.env.MYSQLHOST || 'localhost';
