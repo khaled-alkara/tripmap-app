@@ -34,6 +34,9 @@ app.use('/api/ads', adRoutes);
 
 // after the routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get('/api-docs-json', (req, res) => {
+  res.json(swaggerSpec);
+});
 
 // Test DB connection
 app.get('/health', async (req, res) => {
