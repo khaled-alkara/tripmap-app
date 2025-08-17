@@ -1,40 +1,33 @@
-# Use Node 18 Alpine
+# Stage 1: Build
 FROM node:18-alpine AS builder
 
-# Install npm explicitly (Alpine fix)
 RUN apk add --no-cache npm
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy all (but ignore node_modules via .dockerignore)
+COPY . .
 
-# Install dependencies
+# Install deps and build
 RUN npm install
-
-# Copy TypeScript config and source
-COPY tsconfig.json ./
-COPY src/ ./src/
-
-# Build TypeScript
 RUN npm run build
 
 
-# --------------------------------------------------
-# Stage 2: Production Runtime
+# Stage 2: Production
 FROM node:18-alpine AS production
 
 WORKDIR /app
 
-# Copy built files and node_modules
+# Copy only what we need
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
+COPY --from=builder /app/src ./src        
+COPY --from=builder /app/tsconfig.json ./
 
+# Copy frontend
+COPY ../dist/frontend ./public
 
-# Expose port
 EXPOSE 3000
 
-# Start the server
 CMD ["node", "dist/server.js"]
