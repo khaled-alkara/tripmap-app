@@ -2,13 +2,13 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import sequelize from './src/config/database';
+import sequelize from './config/database';
 import swaggerUi from 'swagger-ui-express';
-import swaggerOptions from './src/config/swaggerConfig';
+import swaggerOptions from './config/swaggerConfig';
 import swaggerJsdoc from 'swagger-jsdoc';
-import routeRoutes from './src/routes/route.routes';
-import operatorRoutes from './src/routes/operator.routes';
-import adRoutes from './src/routes/ad.routes';
+import routeRoutes from './routes/route.routes';
+import operatorRoutes from './routes/operator.routes';
+import adRoutes from './routes/ad.routes';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
