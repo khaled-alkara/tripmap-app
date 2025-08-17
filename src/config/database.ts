@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize';
 // Railway injects these env vars
 const DB_NAME = process.env.MYSQLDATABASE || 'tripmap';
 const DB_USER = process.env.MYSQLUSER || 'root';
-const DB_PASS = process.env.MYSQLPASSWORD || 'root';
+const DB_PASS = process.env.MYSQLPASSWORD || 'password';
 const DB_HOST = process.env.MYSQLHOST || 'localhost';
 const DB_PORT = parseInt(process.env.MYSQLPORT || '3306', 10);
 
