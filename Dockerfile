@@ -32,11 +32,6 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 
-# Copy built frontend (build it locally first)
-# Assuming you built Angular into ../dist/frontend
-# COPY ../dist/frontend ./public
-
-
 # Expose port
 EXPOSE 3000
 
