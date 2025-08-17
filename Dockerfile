@@ -32,8 +32,6 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 
-# ✅ Copy src/ for Swagger JSDoc scanning
-COPY --from=builder /app/src ./src   # 🎯 Critical!
 
 # Expose port
 EXPOSE 3000
