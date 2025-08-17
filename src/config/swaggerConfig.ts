@@ -1,6 +1,8 @@
 // src/config/swaggerConfig.ts
 import { Options } from 'swagger-jsdoc';
+import path from 'path';
 
+const projectRoot = process.cwd(); // 👈 Current working directory
 const options: Options = {
   definition: {
     openapi: '3.0.0',
@@ -131,8 +133,8 @@ $ref: '#/components/schemas/Location'
     }
   },
   apis: [
-    './src/routes/*.ts',       // Look for JSDoc in route files
-    './src/controllers/*.ts'   // Optional: include controller docs
+    path.join(projectRoot, 'src', 'routes', '*.ts'),
+    path.join(projectRoot, 'src', 'controllers', '*.ts')
   ],
 };
 
